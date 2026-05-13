@@ -1,0 +1,70 @@
+{
+  "events": [
+    {
+      "event_id": "EVT-QE-SUB-001-001",
+      "queue_entry_id": "QE-SUB-001",
+      "trace_id": "TRACE-001",
+      "action": "APPROVE",
+      "approver_id": "operator_01",
+      "reason": "Validated against SLA criteria. Token check required.",
+      "timestamp": "2026-05-13T11:28:19.666Z",
+      "previous_status": "PENDING_REVIEW",
+      "new_status": "APPROVED"
+    },
+    {
+      "event_id": "EVT-QE-SUB-002-001",
+      "queue_entry_id": "QE-SUB-002",
+      "trace_id": "TRACE-002",
+      "action": "APPROVE",
+      "approver_id": "operator_01",
+      "reason": "API validation confirmed. Route to handler.",
+      "timestamp": "2026-05-13T11:28:19.704Z",
+      "previous_status": "PENDING_REVIEW",
+      "new_status": "APPROVED"
+    },
+    {
+      "event_id": "EVT-QE-SUB-003-001",
+      "queue_entry_id": "QE-SUB-003",
+      "trace_id": "TRACE-003",
+      "action": "HOLD",
+      "approver_id": "operator_02",
+      "reason": "Requires senior review - data pipeline change.",
+      "timestamp": "2026-05-13T11:28:19.741Z",
+      "previous_status": "PENDING_REVIEW",
+      "new_status": "ESCALATED"
+    },
+    {
+      "event_id": "EVT-QE-SUB-FAIL-001-001",
+      "queue_entry_id": "QE-SUB-FAIL-001",
+      "trace_id": "TRACE-FAIL-001",
+      "action": "REJECT",
+      "approver_id": "operator_01",
+      "reason": "Schema violation confirmed. Invalid submission.",
+      "timestamp": "2026-05-13T11:28:19.778Z",
+      "previous_status": "PENDING_REVIEW",
+      "new_status": "REJECTED"
+    },
+    {
+      "event_id": "EVT-QE-SUB-FAIL-002-001",
+      "queue_entry_id": "QE-SUB-FAIL-002",
+      "trace_id": "TRACE-FAIL-002",
+      "action": "REJECT",
+      "approver_id": "operator_02",
+      "reason": "No valid rule match. Submission malformed.",
+      "timestamp": "2026-05-13T11:28:19.811Z",
+      "previous_status": "PENDING_REVIEW",
+      "new_status": "REJECTED"
+    },
+    {
+      "event_id": "EVT-QE-SUB-003-002",
+      "queue_entry_id": "QE-SUB-003",
+      "trace_id": "TRACE-003",
+      "action": "APPROVE",
+      "approver_id": "senior_operator",
+      "reason": "Reviewed and cleared. Pipeline change acceptable.",
+      "timestamp": "2026-05-13T11:28:19.839Z",
+      "previous_status": "ESCALATED",
+      "new_status": "APPROVED"
+    }
+  ]
+}

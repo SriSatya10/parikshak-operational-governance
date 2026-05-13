@@ -1,0 +1,390 @@
+{
+  "TRACE-001": {
+    "trace_id": "TRACE-001",
+    "submission_id": "SUB-001",
+    "evaluation_result": "PASS",
+    "failure_type": null,
+    "selected_task_id": "TASK_001",
+    "graph_traversal_trace": [
+      "TASK_001",
+      "TASK_002",
+      "TASK_003"
+    ],
+    "queue_status": "APPROVED",
+    "enqueued_at": "2026-05-13T11:28:19.434Z",
+    "approval_events": [
+      {
+        "event_id": "EVT-QE-SUB-001-001",
+        "queue_entry_id": "QE-SUB-001",
+        "trace_id": "TRACE-001",
+        "action": "APPROVE",
+        "approver_id": "operator_01",
+        "reason": "Validated against SLA criteria. Token check required.",
+        "timestamp": "2026-05-13T11:28:19.666Z",
+        "previous_status": "PENDING_REVIEW",
+        "new_status": "APPROVED"
+      }
+    ],
+    "observability_events": [
+      {
+        "event_type": "SUBMISSION",
+        "trace_id": "TRACE-001",
+        "timestamp": "2026-05-13T11:28:19.421Z",
+        "severity": "INFO",
+        "details": {
+          "submission_id": "SUB-001",
+          "message": "Submission received: SUB-001"
+        }
+      },
+      {
+        "event_type": "EVALUATION",
+        "trace_id": "TRACE-001",
+        "timestamp": "2026-05-13T11:28:19.423Z",
+        "severity": "INFO",
+        "details": {
+          "evaluation_result": "PASS",
+          "selected_task_id": "TASK_001",
+          "failure_type": null,
+          "message": "Evaluation: PASS → TASK_001"
+        }
+      },
+      {
+        "event_type": "QUEUE_ENTRY",
+        "trace_id": "TRACE-001",
+        "timestamp": "2026-05-13T11:28:19.436Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-001",
+          "queue_status": "PENDING_REVIEW",
+          "message": "Queued: QE-SUB-001 → PENDING_REVIEW"
+        }
+      },
+      {
+        "event_type": "APPROVAL",
+        "trace_id": "TRACE-001",
+        "timestamp": "2026-05-13T11:28:19.669Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-001",
+          "approver_id": "operator_01",
+          "reason": "Validated against SLA criteria. Token check required.",
+          "message": "APPROVED by operator_01"
+        }
+      }
+    ],
+    "lifecycle_complete": true
+  },
+  "TRACE-002": {
+    "trace_id": "TRACE-002",
+    "submission_id": "SUB-002",
+    "evaluation_result": "PASS",
+    "failure_type": null,
+    "selected_task_id": "TASK_004",
+    "graph_traversal_trace": [
+      "TASK_004",
+      "TASK_005"
+    ],
+    "queue_status": "APPROVED",
+    "enqueued_at": "2026-05-13T11:28:19.477Z",
+    "approval_events": [
+      {
+        "event_id": "EVT-QE-SUB-002-001",
+        "queue_entry_id": "QE-SUB-002",
+        "trace_id": "TRACE-002",
+        "action": "APPROVE",
+        "approver_id": "operator_01",
+        "reason": "API validation confirmed. Route to handler.",
+        "timestamp": "2026-05-13T11:28:19.704Z",
+        "previous_status": "PENDING_REVIEW",
+        "new_status": "APPROVED"
+      }
+    ],
+    "observability_events": [
+      {
+        "event_type": "SUBMISSION",
+        "trace_id": "TRACE-002",
+        "timestamp": "2026-05-13T11:28:19.451Z",
+        "severity": "INFO",
+        "details": {
+          "submission_id": "SUB-002",
+          "message": "Submission received: SUB-002"
+        }
+      },
+      {
+        "event_type": "EVALUATION",
+        "trace_id": "TRACE-002",
+        "timestamp": "2026-05-13T11:28:19.463Z",
+        "severity": "INFO",
+        "details": {
+          "evaluation_result": "PASS",
+          "selected_task_id": "TASK_004",
+          "failure_type": null,
+          "message": "Evaluation: PASS → TASK_004"
+        }
+      },
+      {
+        "event_type": "QUEUE_ENTRY",
+        "trace_id": "TRACE-002",
+        "timestamp": "2026-05-13T11:28:19.488Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-002",
+          "queue_status": "PENDING_REVIEW",
+          "message": "Queued: QE-SUB-002 → PENDING_REVIEW"
+        }
+      },
+      {
+        "event_type": "APPROVAL",
+        "trace_id": "TRACE-002",
+        "timestamp": "2026-05-13T11:28:19.707Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-002",
+          "approver_id": "operator_01",
+          "reason": "API validation confirmed. Route to handler.",
+          "message": "APPROVED by operator_01"
+        }
+      }
+    ],
+    "lifecycle_complete": true
+  },
+  "TRACE-003": {
+    "trace_id": "TRACE-003",
+    "submission_id": "SUB-003",
+    "evaluation_result": "PASS",
+    "failure_type": null,
+    "selected_task_id": "TASK_006",
+    "graph_traversal_trace": [
+      "TASK_006",
+      "TASK_007"
+    ],
+    "queue_status": "APPROVED",
+    "enqueued_at": "2026-05-13T11:28:19.523Z",
+    "approval_events": [
+      {
+        "event_id": "EVT-QE-SUB-003-001",
+        "queue_entry_id": "QE-SUB-003",
+        "trace_id": "TRACE-003",
+        "action": "HOLD",
+        "approver_id": "operator_02",
+        "reason": "Requires senior review - data pipeline change.",
+        "timestamp": "2026-05-13T11:28:19.741Z",
+        "previous_status": "PENDING_REVIEW",
+        "new_status": "ESCALATED"
+      },
+      {
+        "event_id": "EVT-QE-SUB-003-002",
+        "queue_entry_id": "QE-SUB-003",
+        "trace_id": "TRACE-003",
+        "action": "APPROVE",
+        "approver_id": "senior_operator",
+        "reason": "Reviewed and cleared. Pipeline change acceptable.",
+        "timestamp": "2026-05-13T11:28:19.839Z",
+        "previous_status": "ESCALATED",
+        "new_status": "APPROVED"
+      }
+    ],
+    "observability_events": [
+      {
+        "event_type": "SUBMISSION",
+        "trace_id": "TRACE-003",
+        "timestamp": "2026-05-13T11:28:19.499Z",
+        "severity": "INFO",
+        "details": {
+          "submission_id": "SUB-003",
+          "message": "Submission received: SUB-003"
+        }
+      },
+      {
+        "event_type": "EVALUATION",
+        "trace_id": "TRACE-003",
+        "timestamp": "2026-05-13T11:28:19.514Z",
+        "severity": "INFO",
+        "details": {
+          "evaluation_result": "PASS",
+          "selected_task_id": "TASK_006",
+          "failure_type": null,
+          "message": "Evaluation: PASS → TASK_006"
+        }
+      },
+      {
+        "event_type": "QUEUE_ENTRY",
+        "trace_id": "TRACE-003",
+        "timestamp": "2026-05-13T11:28:19.535Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-003",
+          "queue_status": "PENDING_REVIEW",
+          "message": "Queued: QE-SUB-003 → PENDING_REVIEW"
+        }
+      },
+      {
+        "event_type": "ESCALATION",
+        "trace_id": "TRACE-003",
+        "timestamp": "2026-05-13T11:28:19.744Z",
+        "severity": "WARN",
+        "details": {
+          "queue_entry_id": "QE-SUB-003",
+          "approver_id": "operator_02",
+          "reason": "Requires senior review - data pipeline change.",
+          "message": "ESCALATED by operator_02: Requires senior review - data pipeline change."
+        }
+      },
+      {
+        "event_type": "APPROVAL",
+        "trace_id": "TRACE-003",
+        "timestamp": "2026-05-13T11:28:19.853Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-003",
+          "approver_id": "senior_operator",
+          "reason": "Reviewed and cleared. Pipeline change acceptable.",
+          "message": "APPROVED by senior_operator"
+        }
+      }
+    ],
+    "lifecycle_complete": true
+  },
+  "TRACE-FAIL-001": {
+    "trace_id": "TRACE-FAIL-001",
+    "submission_id": "SUB-FAIL-001",
+    "evaluation_result": "FAIL",
+    "failure_type": "schema_violation",
+    "selected_task_id": "NONE",
+    "graph_traversal_trace": [],
+    "queue_status": "REJECTED",
+    "enqueued_at": "2026-05-13T11:28:19.573Z",
+    "approval_events": [
+      {
+        "event_id": "EVT-QE-SUB-FAIL-001-001",
+        "queue_entry_id": "QE-SUB-FAIL-001",
+        "trace_id": "TRACE-FAIL-001",
+        "action": "REJECT",
+        "approver_id": "operator_01",
+        "reason": "Schema violation confirmed. Invalid submission.",
+        "timestamp": "2026-05-13T11:28:19.778Z",
+        "previous_status": "PENDING_REVIEW",
+        "new_status": "REJECTED"
+      }
+    ],
+    "observability_events": [
+      {
+        "event_type": "SUBMISSION",
+        "trace_id": "TRACE-FAIL-001",
+        "timestamp": "2026-05-13T11:28:19.546Z",
+        "severity": "INFO",
+        "details": {
+          "submission_id": "SUB-FAIL-001",
+          "message": "Submission received: SUB-FAIL-001"
+        }
+      },
+      {
+        "event_type": "EVALUATION",
+        "trace_id": "TRACE-FAIL-001",
+        "timestamp": "2026-05-13T11:28:19.558Z",
+        "severity": "INFO",
+        "details": {
+          "evaluation_result": "FAIL",
+          "selected_task_id": "NONE",
+          "failure_type": "schema_violation",
+          "message": "Evaluation: FAIL → NONE"
+        }
+      },
+      {
+        "event_type": "QUEUE_ENTRY",
+        "trace_id": "TRACE-FAIL-001",
+        "timestamp": "2026-05-13T11:28:19.585Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-FAIL-001",
+          "queue_status": "PENDING_REVIEW",
+          "message": "Queued: QE-SUB-FAIL-001 → PENDING_REVIEW"
+        }
+      },
+      {
+        "event_type": "REJECTION",
+        "trace_id": "TRACE-FAIL-001",
+        "timestamp": "2026-05-13T11:28:19.780Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-FAIL-001",
+          "approver_id": "operator_01",
+          "reason": "Schema violation confirmed. Invalid submission.",
+          "message": "REJECTED by operator_01: Schema violation confirmed. Invalid submission."
+        }
+      }
+    ],
+    "lifecycle_complete": true
+  },
+  "TRACE-FAIL-002": {
+    "trace_id": "TRACE-FAIL-002",
+    "submission_id": "SUB-FAIL-002",
+    "evaluation_result": "FAIL",
+    "failure_type": "incorrect_logic",
+    "selected_task_id": "NONE",
+    "graph_traversal_trace": [],
+    "queue_status": "REJECTED",
+    "enqueued_at": "2026-05-13T11:28:19.627Z",
+    "approval_events": [
+      {
+        "event_id": "EVT-QE-SUB-FAIL-002-001",
+        "queue_entry_id": "QE-SUB-FAIL-002",
+        "trace_id": "TRACE-FAIL-002",
+        "action": "REJECT",
+        "approver_id": "operator_02",
+        "reason": "No valid rule match. Submission malformed.",
+        "timestamp": "2026-05-13T11:28:19.811Z",
+        "previous_status": "PENDING_REVIEW",
+        "new_status": "REJECTED"
+      }
+    ],
+    "observability_events": [
+      {
+        "event_type": "SUBMISSION",
+        "trace_id": "TRACE-FAIL-002",
+        "timestamp": "2026-05-13T11:28:19.599Z",
+        "severity": "INFO",
+        "details": {
+          "submission_id": "SUB-FAIL-002",
+          "message": "Submission received: SUB-FAIL-002"
+        }
+      },
+      {
+        "event_type": "EVALUATION",
+        "trace_id": "TRACE-FAIL-002",
+        "timestamp": "2026-05-13T11:28:19.611Z",
+        "severity": "INFO",
+        "details": {
+          "evaluation_result": "FAIL",
+          "selected_task_id": "NONE",
+          "failure_type": "incorrect_logic",
+          "message": "Evaluation: FAIL → NONE"
+        }
+      },
+      {
+        "event_type": "QUEUE_ENTRY",
+        "trace_id": "TRACE-FAIL-002",
+        "timestamp": "2026-05-13T11:28:19.639Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-FAIL-002",
+          "queue_status": "PENDING_REVIEW",
+          "message": "Queued: QE-SUB-FAIL-002 → PENDING_REVIEW"
+        }
+      },
+      {
+        "event_type": "REJECTION",
+        "trace_id": "TRACE-FAIL-002",
+        "timestamp": "2026-05-13T11:28:19.814Z",
+        "severity": "INFO",
+        "details": {
+          "queue_entry_id": "QE-SUB-FAIL-002",
+          "approver_id": "operator_02",
+          "reason": "No valid rule match. Submission malformed.",
+          "message": "REJECTED by operator_02: No valid rule match. Submission malformed."
+        }
+      }
+    ],
+    "lifecycle_complete": true
+  }
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "queue_entry_id": "QE-SUB-001",
+    "trace_id": "TRACE-001",
+    "submission_id": "SUB-001",
+    "pipeline_output": {
+      "trace_id": "TRACE-001",
+      "submission_id": "SUB-001",
+      "evaluation_result": "PASS",
+      "failure_type": null,
+      "selected_task_id": "TASK_001",
+      "selection_reason": "Authentication failure detected - route to token validation.",
+      "source": "task_graph"
+    },
+    "queue_status": "APPROVED",
+    "enqueued_at": "2026-05-13T11:28:19.434Z",
+    "evaluation_result": "PASS",
+    "failure_type": null,
+    "selected_task_id": "TASK_001",
+    "graph_traversal_trace": [
+      "TASK_001",
+      "TASK_002",
+      "TASK_003"
+    ]
+  },
+  {
+    "queue_entry_id": "QE-SUB-002",
+    "trace_id": "TRACE-002",
+    "submission_id": "SUB-002",
+    "pipeline_output": {
+      "trace_id": "TRACE-002",
+      "submission_id": "SUB-002",
+      "evaluation_result": "PASS",
+      "failure_type": null,
+      "selected_task_id": "TASK_004",
+      "selection_reason": "Invalid API payload - route to request validation.",
+      "source": "task_graph"
+    },
+    "queue_status": "APPROVED",
+    "enqueued_at": "2026-05-13T11:28:19.477Z",
+    "evaluation_result": "PASS",
+    "failure_type": null,
+    "selected_task_id": "TASK_004",
+    "graph_traversal_trace": [
+      "TASK_004",
+      "TASK_005"
+    ]
+  },
+  {
+    "queue_entry_id": "QE-SUB-003",
+    "trace_id": "TRACE-003",
+    "submission_id": "SUB-003",
+    "pipeline_output": {
+      "trace_id": "TRACE-003",
+      "submission_id": "SUB-003",
+      "evaluation_result": "PASS",
+      "failure_type": null,
+      "selected_task_id": "TASK_006",
+      "selection_reason": "Standard processing requested - route to data pipeline.",
+      "source": "task_graph"
+    },
+    "queue_status": "APPROVED",
+    "enqueued_at": "2026-05-13T11:28:19.523Z",
+    "evaluation_result": "PASS",
+    "failure_type": null,
+    "selected_task_id": "TASK_006",
+    "graph_traversal_trace": [
+      "TASK_006",
+      "TASK_007"
+    ]
+  },
+  {
+    "queue_entry_id": "QE-SUB-FAIL-001",
+    "trace_id": "TRACE-FAIL-001",
+    "submission_id": "SUB-FAIL-001",
+    "pipeline_output": {
+      "trace_id": "TRACE-FAIL-001",
+      "submission_id": "SUB-FAIL-001",
+      "evaluation_result": "FAIL",
+      "failure_type": "schema_violation",
+      "selected_task_id": "NONE",
+      "selection_reason": "HARD FAIL: product must not be empty.",
+      "source": "task_graph"
+    },
+    "queue_status": "REJECTED",
+    "enqueued_at": "2026-05-13T11:28:19.573Z",
+    "evaluation_result": "FAIL",
+    "failure_type": "schema_violation",
+    "selected_task_id": "NONE",
+    "graph_traversal_trace": []
+  },
+  {
+    "queue_entry_id": "QE-SUB-FAIL-002",
+    "trace_id": "TRACE-FAIL-002",
+    "submission_id": "SUB-FAIL-002",
+    "pipeline_output": {
+      "trace_id": "TRACE-FAIL-002",
+      "submission_id": "SUB-FAIL-002",
+      "evaluation_result": "FAIL",
+      "failure_type": "incorrect_logic",
+      "selected_task_id": "NONE",
+      "selection_reason": "No rule matched for layer='xyz', subsystem='abc'",
+      "source": "task_graph"
+    },
+    "queue_status": "REJECTED",
+    "enqueued_at": "2026-05-13T11:28:19.627Z",
+    "evaluation_result": "FAIL",
+    "failure_type": "incorrect_logic",
+    "selected_task_id": "NONE",
+    "graph_traversal_trace": []
+  }
+]
