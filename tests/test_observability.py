@@ -1,5 +1,5 @@
 """
-Parikshak Operational Governance — Observability Tests
+Parikshak Evaluation Engine — Observability Tests
 ========================================================
 Tests: structured log emission, contract violation visibility,
        no silent failures.
@@ -10,27 +10,26 @@ import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from src.governance.queue_store import QueueStore
-from src.observability.observability import ObservabilityEmitter
-from src.observability.contract_monitor import ContractMonitor
-from src.models.governance_models import (
-    EVENT_SUBMISSION, EVENT_EVALUATION, EVENT_QUEUE_ENTRY,
-    EVENT_APPROVAL, EVENT_REJECTION, EVENT_ESCALATION,
-    EVENT_CONTRACT_VIOLATION, EVENT_GRAPH_REJECT, EVENT_REPLAY_FAILURE,
-    SEVERITY_INFO, SEVERITY_WARN, SEVERITY_ERROR, SEVERITY_CRITICAL,
+from src.evaluation_engine.event_store import EventStore
+from src.evaluation_engine.observability import ObservabilityEmitter
+from src.evaluation_engine.contract_monitor import ContractMonitor
+from src.evaluation_engine.evaluation_models import (
+    EVENT_SUBMISSION, EVENT_EVALUATION,
+    EVENT_CONTRACT_VIOLATION, EVENT_GRAPH_REJECT,
+    SEVERITY_INFO, SEVERITY_ERROR, SEVERITY_CRITICAL,
 )
 
 
 @pytest.fixture
 def obs_env(tmp_path):
-    store = QueueStore(str(tmp_path / "state"))
+    store = EventStore(str(tmp_path / "state"))
     emitter = ObservabilityEmitter(store)
     monitor = ContractMonitor(emitter)
     return store, emitter, monitor
 
 
 class TestObservabilityEmitter:
-    """Phase 4: Observability Hardening tests."""
+    """Observability Hardening tests."""
 
     def test_emit_submission(self, obs_env):
         store, emitter, monitor = obs_env
@@ -45,29 +44,6 @@ class TestObservabilityEmitter:
         assert event.event_type == EVENT_EVALUATION
         assert event.severity == SEVERITY_INFO
 
-    def test_emit_queue_entry(self, obs_env):
-        store, emitter, monitor = obs_env
-        event = emitter.emit_queue_entry("T1", "QE-S1", "PENDING_REVIEW")
-        assert event.event_type == EVENT_QUEUE_ENTRY
-
-    def test_emit_approval(self, obs_env):
-        store, emitter, monitor = obs_env
-        event = emitter.emit_approval("T1", "QE-S1", "op1", "Approved")
-        assert event.event_type == EVENT_APPROVAL
-        assert event.severity == SEVERITY_INFO
-
-    def test_emit_rejection(self, obs_env):
-        store, emitter, monitor = obs_env
-        event = emitter.emit_rejection("T1", "QE-S1", "op1", "Rejected")
-        assert event.event_type == EVENT_REJECTION
-        assert event.severity == SEVERITY_INFO
-
-    def test_emit_escalation_is_warn(self, obs_env):
-        store, emitter, monitor = obs_env
-        event = emitter.emit_escalation("T1", "QE-S1", "op1", "Needs review")
-        assert event.event_type == EVENT_ESCALATION
-        assert event.severity == SEVERITY_WARN
-
     def test_emit_contract_violation_is_critical(self, obs_env):
         store, emitter, monitor = obs_env
         event = emitter.emit_contract_violation("T1", "Missing field")
@@ -78,12 +54,6 @@ class TestObservabilityEmitter:
         store, emitter, monitor = obs_env
         event = emitter.emit_graph_reject("T1", "No rule matched")
         assert event.event_type == EVENT_GRAPH_REJECT
-        assert event.severity == SEVERITY_ERROR
-
-    def test_emit_replay_failure_is_error(self, obs_env):
-        store, emitter, monitor = obs_env
-        event = emitter.emit_replay_failure("T1", "Trace not found")
-        assert event.event_type == EVENT_REPLAY_FAILURE
         assert event.severity == SEVERITY_ERROR
 
     def test_events_persisted(self, obs_env):
@@ -122,7 +92,7 @@ class TestObservabilityEmitter:
 
 
 class TestContractMonitor:
-    """Phase 4: Contract monitoring tests."""
+    """Contract monitoring tests."""
 
     def test_valid_pass_output(self, obs_env):
         store, emitter, monitor = obs_env

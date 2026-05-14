@@ -1,0 +1,100 @@
+{
+  "events": [
+    {
+      "event_type": "SUBMISSION",
+      "trace_id": "TRACE-001",
+      "timestamp": "2026-05-14T21:14:50.207Z",
+      "severity": "INFO",
+      "details": {
+        "submission_id": "SUB-001",
+        "message": "Submission received: SUB-001"
+      }
+    },
+    {
+      "event_type": "EVALUATION",
+      "trace_id": "TRACE-001",
+      "timestamp": "2026-05-14T21:14:50.209Z",
+      "severity": "INFO",
+      "details": {
+        "evaluation_result": "PASS",
+        "selected_task_id": "TASK_001",
+        "failure_type": null,
+        "message": "Evaluation: PASS → TASK_001"
+      }
+    },
+    {
+      "event_type": "SUBMISSION",
+      "trace_id": "TRACE-002",
+      "timestamp": "2026-05-14T21:14:50.217Z",
+      "severity": "INFO",
+      "details": {
+        "submission_id": "SUB-002",
+        "message": "Submission received: SUB-002"
+      }
+    },
+    {
+      "event_type": "EVALUATION",
+      "trace_id": "TRACE-002",
+      "timestamp": "2026-05-14T21:14:50.226Z",
+      "severity": "INFO",
+      "details": {
+        "evaluation_result": "PASS",
+        "selected_task_id": "TASK_004",
+        "failure_type": null,
+        "message": "Evaluation: PASS → TASK_004"
+      }
+    },
+    {
+      "event_type": "SUBMISSION",
+      "trace_id": "TRACE-FAIL-001",
+      "timestamp": "2026-05-14T21:14:50.236Z",
+      "severity": "INFO",
+      "details": {
+        "submission_id": "SUB-FAIL-001",
+        "message": "Submission received: SUB-FAIL-001"
+      }
+    },
+    {
+      "event_type": "EVALUATION",
+      "trace_id": "TRACE-FAIL-001",
+      "timestamp": "2026-05-14T21:14:50.247Z",
+      "severity": "INFO",
+      "details": {
+        "evaluation_result": "FAIL",
+        "selected_task_id": "NONE",
+        "failure_type": "schema_violation",
+        "message": "Evaluation: FAIL → NONE"
+      }
+    },
+    {
+      "event_type": "SUBMISSION",
+      "trace_id": "TRACE-BAD-001",
+      "timestamp": "2026-05-14T21:14:50.260Z",
+      "severity": "INFO",
+      "details": {
+        "submission_id": "SUB-BAD-001",
+        "message": "Submission received: SUB-BAD-001"
+      }
+    },
+    {
+      "event_type": "CONTRACT_VIOLATION",
+      "trace_id": "TRACE-BAD-001",
+      "timestamp": "2026-05-14T21:14:50.271Z",
+      "severity": "CRITICAL",
+      "details": {
+        "violation": "PASS result but failure_type is not null",
+        "message": "CONTRACT VIOLATION: PASS result but failure_type is not null"
+      }
+    },
+    {
+      "event_type": "CONTRACT_VIOLATION",
+      "trace_id": "TRACE-BAD-001",
+      "timestamp": "2026-05-14T21:14:50.282Z",
+      "severity": "CRITICAL",
+      "details": {
+        "violation": "Invalid source: wrong_source",
+        "message": "CONTRACT VIOLATION: Invalid source: wrong_source"
+      }
+    }
+  ]
+}

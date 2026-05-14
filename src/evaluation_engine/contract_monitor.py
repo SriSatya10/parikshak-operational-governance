@@ -4,8 +4,8 @@ Parikshak Operational Governance — Contract Monitor
 Monitors pipeline outputs for contract violations.
 Reports visible violations — never silently passes.
 """
-from typing import Dict, Any, List, Optional
-from src.observability.observability import ObservabilityEmitter
+from typing import Dict, Any, List
+from src.evaluation_engine.observability import ObservabilityEmitter
 
 # The 7 required fields in every pipeline output
 REQUIRED_FIELDS = {

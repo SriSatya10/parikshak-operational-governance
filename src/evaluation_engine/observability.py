@@ -7,41 +7,31 @@ No silent failures allowed. Every event is logged explicitly.
 Severity mapping:
   - Contract violations → CRITICAL
   - Graph rejects (no rule match) → ERROR
-  - Replay failures (trace not found) → ERROR
-  - Escalation events → WARN
-  - Approval/rejection → INFO
-  - Queue entry → INFO
   - Submission/evaluation → INFO
 """
 from typing import Dict, Any
-from src.models.governance_models import (
-    EVENT_SUBMISSION, EVENT_EVALUATION, EVENT_QUEUE_ENTRY,
-    EVENT_APPROVAL, EVENT_REJECTION, EVENT_ESCALATION,
-    EVENT_CONTRACT_VIOLATION, EVENT_GRAPH_REJECT, EVENT_REPLAY_FAILURE,
+from src.evaluation_engine.evaluation_models import (
+    EVENT_SUBMISSION, EVENT_EVALUATION,
+    EVENT_CONTRACT_VIOLATION, EVENT_GRAPH_REJECT,
     SEVERITY_INFO, SEVERITY_WARN, SEVERITY_ERROR, SEVERITY_CRITICAL,
     ObservabilityEvent, _utc_now_iso,
 )
-from src.governance.queue_store import QueueStore
+from src.evaluation_engine.event_store import EventStore
 
 
 # Event type → default severity mapping
 _SEVERITY_MAP = {
     EVENT_SUBMISSION: SEVERITY_INFO,
     EVENT_EVALUATION: SEVERITY_INFO,
-    EVENT_QUEUE_ENTRY: SEVERITY_INFO,
-    EVENT_APPROVAL: SEVERITY_INFO,
-    EVENT_REJECTION: SEVERITY_INFO,
-    EVENT_ESCALATION: SEVERITY_WARN,
     EVENT_CONTRACT_VIOLATION: SEVERITY_CRITICAL,
     EVENT_GRAPH_REJECT: SEVERITY_ERROR,
-    EVENT_REPLAY_FAILURE: SEVERITY_ERROR,
 }
 
 
 class ObservabilityEmitter:
     """Structured operational log emitter. No silent failures."""
 
-    def __init__(self, store: QueueStore):
+    def __init__(self, store: EventStore):
         self._store = store
 
     def emit(self, event_type: str, trace_id: str,
@@ -77,41 +67,6 @@ class ObservabilityEmitter:
             "message": f"Evaluation: {result} → {task_id}",
         })
 
-    def emit_queue_entry(self, trace_id: str, queue_entry_id: str,
-                         status: str) -> ObservabilityEvent:
-        return self.emit(EVENT_QUEUE_ENTRY, trace_id, {
-            "queue_entry_id": queue_entry_id,
-            "queue_status": status,
-            "message": f"Queued: {queue_entry_id} → {status}",
-        })
-
-    def emit_approval(self, trace_id: str, queue_entry_id: str,
-                       approver_id: str, reason: str) -> ObservabilityEvent:
-        return self.emit(EVENT_APPROVAL, trace_id, {
-            "queue_entry_id": queue_entry_id,
-            "approver_id": approver_id,
-            "reason": reason,
-            "message": f"APPROVED by {approver_id}",
-        })
-
-    def emit_rejection(self, trace_id: str, queue_entry_id: str,
-                        approver_id: str, reason: str) -> ObservabilityEvent:
-        return self.emit(EVENT_REJECTION, trace_id, {
-            "queue_entry_id": queue_entry_id,
-            "approver_id": approver_id,
-            "reason": reason,
-            "message": f"REJECTED by {approver_id}: {reason}",
-        })
-
-    def emit_escalation(self, trace_id: str, queue_entry_id: str,
-                         approver_id: str, reason: str) -> ObservabilityEvent:
-        return self.emit(EVENT_ESCALATION, trace_id, {
-            "queue_entry_id": queue_entry_id,
-            "approver_id": approver_id,
-            "reason": reason,
-            "message": f"ESCALATED by {approver_id}: {reason}",
-        })
-
     def emit_contract_violation(self, trace_id: str,
                                  violation: str) -> ObservabilityEvent:
         return self.emit(EVENT_CONTRACT_VIOLATION, trace_id, {
@@ -123,12 +78,6 @@ class ObservabilityEmitter:
         return self.emit(EVENT_GRAPH_REJECT, trace_id, {
             "reason": reason,
             "message": f"GRAPH REJECT: {reason}",
-        })
-
-    def emit_replay_failure(self, trace_id: str, reason: str) -> ObservabilityEvent:
-        return self.emit(EVENT_REPLAY_FAILURE, trace_id, {
-            "reason": reason,
-            "message": f"REPLAY FAILURE: {reason}",
         })
 
     def get_events_by_trace(self, trace_id: str):
